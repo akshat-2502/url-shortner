@@ -11,5 +11,8 @@ export const saveShortUrl = async (shortUrl, longUrl, userId) => {
 };
 
 export const getShortUrl = async (shortUrl) => {
-  return await urlSchema.findOne({ short_url: shortUrl });
+  return await urlSchema.findOneAndUpdate(
+    { short_url: shortUrl },
+    { $inc: { clicks: 1 } } //if it return the url click in increased by one to update the click in the db
+  );
 };
