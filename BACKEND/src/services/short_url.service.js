@@ -8,6 +8,7 @@ export const createShortUrlWithoutUser = async (url) => {
     url = "https://" + url;
   }
   const shortUrl = await generateNanoId(7);
+  if (!shortUrl) throw new Error("Short url not generated");
   await saveShortUrl(shortUrl, url);
   return shortUrl;
 };
