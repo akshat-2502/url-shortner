@@ -1,9 +1,7 @@
 import express from "express";
-
-import { nanoid } from "nanoid";
-import urlSchema from "./src/model/short_url.model.js";
 import connectDB from "./src/config/mongo.config.js";
 import short_url from "./src/routes/short_url.route.js";
+import auth_routes from "./src/routes/auth.routes.js";
 import dotenv from "dotenv";
 import { redirectFromShortUrl } from "./src/controller/short_url.controller.js";
 import cors from "cors";
@@ -16,11 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extented: true }));
 app.use(cors());
 
-//creating short url
 app.use("/api/create", short_url);
-
-//redirectig to the url
 app.get("/:id", redirectFromShortUrl);
+app.use("/api/auth", auth_routes);
 
 //error handler
 app.use(errorHandler);
