@@ -5,7 +5,9 @@ import auth_routes from "./src/routes/auth.routes.js";
 import dotenv from "dotenv";
 import { redirectFromShortUrl } from "./src/controller/short_url.controller.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { errorHandler } from "./src/utils/errorhandler.js";
+import { attachUser } from "./src/utils/attachUser.js";
 dotenv.config("./.env");
 
 const app = express();
@@ -13,6 +15,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extented: true }));
 app.use(cors());
+app.use(cookieParser());
+
+app.use(attachUser);
 
 app.use("/api/create", short_url);
 app.get("/:id", redirectFromShortUrl);
