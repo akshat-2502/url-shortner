@@ -1,11 +1,11 @@
 import { createRootRoute } from "@tanstack/react-router";
-import RootLayout from "../App";
-import { homePageRoute } from "./homepage";
-import { authRoute } from "./auth.route";
-import { dashboardRoute } from "./dashboard";
+import RootLayout from "../RootLayout.jsx";
+import { homePageRoute } from "./homepage.js";
+import { authRoute } from "./auth.route.js";
+import { dashboardRoute } from "./dashboard.js";
 
 export const rootRoute = createRootRoute({
-  component: <RootLayout />,
+  component: RootLayout,
 });
 
 export const routeTree = rootRoute.addChildren([
