@@ -5,5 +5,5 @@ import Dashboard from "../pages/Dashboard";
 export const dashboardRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/dashboard",
-  component: <Dashboard />,
+  component: Dashboard,
 });

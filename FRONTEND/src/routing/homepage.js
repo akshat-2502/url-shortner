@@ -5,5 +5,5 @@ import HomePage from "../pages/HomePage";
 export const homePageRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: <HomePage />,
+  component: HomePage,
 });
