@@ -17,3 +17,7 @@ export const createUser = async (name, email, password) => {
   await newUser.save();
   return newUser;
 };
+
+export const getAllUserUrl = async (id) => {
+  return await User.find({ user: id });
+};

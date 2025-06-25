@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./src/config/mongo.config.js";
 import short_url from "./src/routes/short_url.route.js";
 import auth_routes from "./src/routes/auth.routes.js";
+import user_routes from "./src/routes/user.route.js";
 import dotenv from "dotenv";
 import { redirectFromShortUrl } from "./src/controller/short_url.controller.js";
 import cors from "cors";
@@ -28,6 +29,7 @@ app.use(attachUser);
 app.use("/api/create", short_url);
 app.get("/:id", redirectFromShortUrl);
 app.use("/api/auth", auth_routes);
+app.use("/api/user", user_routes);
 
 //error handler
 app.use(errorHandler);
