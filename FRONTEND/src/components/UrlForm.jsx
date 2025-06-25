@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { createShortUrl } from "../api/shortUrl.api";
+import { useSelector } from "react-redux";
 
 const UrlForm = () => {
   //state variables
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [customSlug, setCustomSlug] = useState("");
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   //handle submit
   const handleSubmit = async () => {
@@ -52,6 +55,24 @@ const UrlForm = () => {
             {error}
           </div>
         )} */}
+      {isAuthenticated && (
+        <div className="mt-4">
+          <label
+            htmlFor="customSlug"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Custom URL (optional)
+          </label>
+          <input
+            type="text"
+            id="customSlug"
+            value={customSlug}
+            onChange={(event) => setCustomSlug(event.target.value)}
+            placeholder="Enter custom slug"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      )}
 
       {shortUrl && (
         <div className="mt-6">

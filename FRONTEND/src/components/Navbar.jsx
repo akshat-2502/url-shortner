@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-indigo-500 shadow-md">
+    <nav className="bg-gradient-to-r from-blue-600 to-indigo-400 shadow-md relative">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-14">
           {/* Left side - App Name */}
